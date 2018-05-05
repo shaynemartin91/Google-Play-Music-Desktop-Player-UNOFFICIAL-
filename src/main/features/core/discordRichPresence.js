@@ -77,7 +77,9 @@ const setPresence = () => {
 };
 
 app.on('before-quit', () => {
-  client.disconnect();
+  if (client) {
+    client.disconnect();
+  }
 });
 
 PlaybackAPI.on('change:state', setPresence);
